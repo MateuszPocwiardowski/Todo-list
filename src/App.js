@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+
+import './App.css'
+
+import Heading from './Heading'
+import TodoItem from './TodoItem'
+
+const DUMMY_TASKS = [
+	{
+		id: 1,
+		description: 'Zrobić Marcelowi mleko',
+		status: false,
+	},
+	{
+		id: 2,
+		description: 'Umyć kuchnie',
+		status: false,
+	},
+	{
+		id: 3,
+		description: 'Odkurzyć',
+		status: false,
+	},
+	{
+		id: 4,
+		description: 'Wypić conajmniej 5 piwek i to w szybkim tempie',
+		status: false,
+	},
+	{
+		id: 5,
+		description: 'Wypić conajmniej 5 piwek i to w szybkim tempie',
+		status: false,
+	},
+]
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [tasks, setTasks] = useState(DUMMY_TASKS)
+
+	return (
+		<div className='app'>
+			<Heading />
+			<div className='todo-list'>
+				{tasks.map(task => (
+					<TodoItem className='todo-list__item' key={task.id} description={task.description} />
+				))}
+			</div>
+		</div>
+	)
 }
 
-export default App;
+export default App

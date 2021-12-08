@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.heading {
+	padding: 1em;
+}
+
+.title {
+	font-family: 'Meow Script', cursive;
+	font-size: 2.5em;
+}
+
+.separator {
+	height: 2px;
+	width: 20%;
+	max-width: 80px;
+	margin: 0 auto;
+	border-radius: 20px;
+	background-color: black;
+}
