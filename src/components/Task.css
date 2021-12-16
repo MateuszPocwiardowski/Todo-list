@@ -1,0 +1,35 @@
+.task {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 1em;
+}
+
+.task__description {
+	width: 70%;
+	border: none;
+	text-align: left;
+	background: none;
+	font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+	font-size: 1em;
+}
+
+.task__description--done {
+	text-decoration: line-through;
+}
+
+.task__panel {
+	width: 30%;
+    max-width: 100px;
+	text-align: right;
+}
+
+.task__panel--edit,
+.task__panel--remove {
+	border: none;
+	background: none;
+	padding: 0.3em;
+	font-size: 1.1em;
+    cursor: pointer;
+}

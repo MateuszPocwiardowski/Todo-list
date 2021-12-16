@@ -1,49 +1,53 @@
 import React, { useState } from 'react'
 
-import './App.css'
+import Tasks from './components/Tasks'
+import NewTask from './components/NewTask'
 
-import Heading from './Heading'
-import TodoItem from './TodoItem'
+import './App.css'
 
 const DUMMY_TASKS = [
 	{
 		id: 1,
-		description: 'Zrobić Marcelowi mleko',
+		description: 'Wyrzucić śmieci',
 		status: false,
 	},
 	{
 		id: 2,
-		description: 'Umyć kuchnie',
-		status: false,
+		description: 'Wytrzeć naczynia',
+		status: true,
 	},
 	{
 		id: 3,
-		description: 'Odkurzyć',
+		description: 'Zrobić zakupy',
 		status: false,
 	},
 	{
 		id: 4,
-		description: 'Wypić conajmniej 5 piwek i to w szybkim tempie',
-		status: false,
-	},
-	{
-		id: 5,
-		description: 'Wypić conajmniej 5 piwek i to w szybkim tempie',
-		status: false,
+		description: 'Skosić trawe',
+		status: true,
 	},
 ]
 
 function App() {
-	const [tasks, setTasks] = useState(DUMMY_TASKS)
+	const [tasks, setTask, removeTask] = useState(DUMMY_TASKS)
+	// const [tasks, removeTask] = useState(DUMMY_TASKS)
+
+	const addTaskHandler = task => {
+		setTask(prevTasks => {
+			return [task, ...prevTasks]
+		})
+	}
+
+	const removeTaskHandler = task => {
+		removeTask(prevTasks => {
+			return [...prevTasks].remove[task]
+		})
+	}
 
 	return (
-		<div className='app'>
-			<Heading />
-			<div className='todo-list'>
-				{tasks.map(task => (
-					<TodoItem className='todo-list__item' key={task.id} description={task.description} />
-				))}
-			</div>
+		<div>
+			<Tasks items={tasks} onRemoveTask={removeTaskHandler}/>
+			<NewTask onSaveData={addTaskHandler} />
 		</div>
 	)
 }

@@ -1,0 +1,36 @@
+.new-task {
+	position: fixed;
+	left: 2em;
+	right: 2em;
+	bottom: 2em;
+	display: flex;
+	justify-content: space-between;
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	padding: 0 1em;
+}
+
+.new-task--hidden {
+	display: none;
+}
+
+.new-task__input {
+	width: 100%;
+	border: none;
+	background: none;
+    font-size: 1em;
+}
+
+.new-task__input:focus {
+	outline: none;
+}
+
+.new-task__button {
+	padding: 0.5em;
+	font-size: 1.1em;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
