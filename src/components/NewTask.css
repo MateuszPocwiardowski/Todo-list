@@ -1,11 +1,12 @@
 .new-task {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
+	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
 	background-color: var(--gray);
 	box-shadow: 0px 0px 20px var(--shadow);
-	padding: 0 1em;
 }
 
 .new-task--hidden {
@@ -14,6 +15,7 @@
 
 .new-task__input {
 	width: 100%;
+	padding-left: 1em;
 	border: none;
 	background: none;
 	font-size: 1em;
@@ -24,7 +26,7 @@
 }
 
 .new-task__button {
-	padding: 0.5em;
+	padding: 0.5em 1em;
 	font-size: 1.1em;
 	border: none;
 	background: none;
