@@ -9,3 +9,10 @@ $ git clone https://github.com/MateuszPocwiardowski/Todo-list
 $ npm i
 $ npm start
 ```
+
+## Screenshot
+
+![Alt text](/public/screenshot.png?raw=true)
+
+## Live 
+https://mp-to-do.netlify.app/
