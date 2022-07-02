@@ -5,7 +5,7 @@ import Summary from './Summary'
 
 import './Tasks.css'
 
-const Tasks = ({ tasks, onCompleteTask, onDeleteTask }) => {
+const Tasks = ({ tasks, onAddTask, onCompleteTask, onDeleteTask, onEditTask }) => {
 	const doneTaskArray = tasks.filter(task => {
 		return task.completed === true
 	})
@@ -27,15 +27,19 @@ const Tasks = ({ tasks, onCompleteTask, onDeleteTask }) => {
 							id={task.id}
 							quote={task.quote}
 							completed={task.completed}
-							// onEditItem={onEditItem}
 							onComplete={onCompleteTask}
 							onDelete={onDeleteTask}
+							onEdit={onEditTask}
 						/>
 					))}
 				</div>
 			)}
 
 			<Summary amountDoneTasks={doneTasks} amountTasks={tasks.length} />
+
+			<button className='new-task__buton' onClick={onAddTask}>
+				Add new task
+			</button>
 		</div>
 	)
 }

@@ -1,0 +1,40 @@
+.popup {
+	position: relative;
+	margin-top: 4rem;
+	max-height: 60%;
+	width: 100%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: row;
+	padding: 1rem 1.5rem;
+	background-color: var(--gray);
+	box-shadow: 0px 0px 20px var(--shadow);
+}
+
+.popup__input {
+	width: 100%;
+	text-align: left;
+	font-size: 1em;
+	background: none;
+	border: none;
+}
+
+.popup__input::placeholder {
+	color: var(--black);
+}
+
+.popup__input--warning::placeholder {
+    color: red;
+}
+
+.popup__input:focus {
+	outline: none;
+}
+
+.popup__button {
+	font-size: 1.1em;
+    color: var(--black);
+	border: none;
+	background: none;
+	cursor: pointer;
+}

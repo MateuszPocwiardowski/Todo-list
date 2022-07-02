@@ -23,12 +23,14 @@
 }
 
 .summary__span {
-    text-align: right;
-    width: 20%;
-    min-width: 140px;
+	text-align: right;
+	color: var(--black);
+	width: 20%;
+	min-width: 140px;
 }
 
 .summary__span--amount {
+	color: var(--black);
 	font-weight: bold;
 }
 

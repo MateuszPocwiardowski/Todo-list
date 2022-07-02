@@ -1,24 +1,11 @@
 .app {
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 button:focus {
 	outline: none;
 	background-color: var(--shadow);
-}
-
-.new-task__buton {
-	padding: 0.5em 2em;
-	font-family: 'Roboto', sans-serif;
-	color: var(--gray);
-	background: var(--black);
-	border: none;
-	border-radius: 20px;
-	cursor: pointer;
-	transform: translateY(-50%);
-}
-
-.new-task__buton:focus {
-	outline: none;
-	background: var(--black);
 }
