@@ -1,10 +1,9 @@
 .new-task {
+	position: absolute;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 100%;
-	max-width: 600px;
-	margin: 0 auto;
+	padding: 0 1rem;
 	background-color: var(--gray);
 	box-shadow: 0px 0px 20px var(--shadow);
 }
@@ -15,10 +14,10 @@
 
 .new-task__input {
 	width: 100%;
-	padding-left: 1em;
-	border: none;
-	background: none;
+	text-align: left;
 	font-size: 1em;
+	background: none;
+	border: none;
 }
 
 .new-task__input:focus {
@@ -26,7 +25,6 @@
 }
 
 .new-task__button {
-	padding: 0.5em 1em;
 	font-size: 1.1em;
 	border: none;
 	background: none;

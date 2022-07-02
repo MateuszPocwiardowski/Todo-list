@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 0 1em;
 }
 
 .task__description {
@@ -11,7 +10,7 @@
 	text-align: left;
 	background: none;
 	font-family: 'Roboto', sans-serif;
-    cursor: pointer;
+	cursor: pointer;
 	font-size: 1em;
 }
 
@@ -21,7 +20,7 @@
 
 .task__panel {
 	width: 30%;
-    max-width: 100px;
+	max-width: 100px;
 	text-align: right;
 }
 
@@ -31,5 +30,5 @@
 	background: none;
 	padding: 0.3em;
 	font-size: 1.1em;
-    cursor: pointer;
+	cursor: pointer;
 }

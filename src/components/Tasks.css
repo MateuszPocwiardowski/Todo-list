@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Meow+Script&display=swap');
 
 .tasks {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	max-height: 80%;
 	width: 100%;
 	max-width: 600px;
-	margin: 0 auto;
 	background-color: var(--gray);
 	box-shadow: 0px 0px 20px var(--shadow);
 }
@@ -15,7 +11,6 @@
 .tasks__heading {
 	font-family: 'Meow Script', cursive;
 	font-size: 2.6em;
-	padding: 0.4em 0 0.2em;
 }
 
 .tasks__separator {
@@ -29,13 +24,4 @@
 	width: 100%;
 	margin: 0.5em;
 	overflow-y: auto;
-}
-
-@keyframes jump {
-	from {
-		transform: translateY(0px);
-	}
-	to {
-		transform: translateY(10px);
-	}
 }
