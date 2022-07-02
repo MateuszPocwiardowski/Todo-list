@@ -21,8 +21,8 @@ const NewTask = props => {
 		}
 
 		props.onSaveData(taskData)
-
 		setEnteredTask('')
+		props.onCancel()
 	}
 
 	return (

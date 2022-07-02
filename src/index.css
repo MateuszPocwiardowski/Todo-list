@@ -4,8 +4,16 @@ html {
 	font-size: 62.5%;
 }
 
+:root {
+	--black: rgb(17, 45, 78);
+	--dark: rgb(63, 114, 175);
+	--teal: rgb(219, 226, 239);
+	--gray: rgb(249, 247, 247);
+	--shadow: rgba(0, 0, 0, 0.1);
+}
+
 body {
-	background: linear-gradient(to right, pink 0%, pink 50%, paleturquoise 50%, paleturquoise 100%);
+	background: linear-gradient(to right, var(--teal) 0%, var(--teal) 50%, var(--gray) 50%, var(--gray) 100%);
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.6em;
 	margin: 2em;
@@ -13,4 +21,5 @@ body {
 
 body button:focus {
 	outline: none;
+	background-color: var(--shadow);
 }
