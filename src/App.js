@@ -1,128 +1,141 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import Tasks from './components/Tasks'
 import NewTask from './components/NewTask'
-import RenameTask from './components/RenameTask'
+// import RenameTask from './components/RenameTask'
 
 import './App.css'
 
 const DUMMY_TASKS = [
 	{
 		id: 1,
-		description: 'Hang laudry',
+		quote: 'Hang laudry',
 		completed: false,
 	},
 	{
 		id: 2,
-		description: 'Cook launch',
+		quote: 'Cook launch',
 		completed: false,
 	},
 	{
 		id: 3,
-		description: 'Get a job in Allegro',
+		quote: 'Get a job in Allegro',
 		completed: false,
 	},
 	{
 		id: 4,
-		description: 'Clean the shoes',
+		quote: 'Clean the shoes',
 		completed: false,
 	},
 	{
 		id: 5,
-		description: 'Wash the car',
+		quote: 'Wash the car',
 		completed: false,
 	},
 	{
 		id: 6,
-		description: 'Play with my son',
+		quote: 'Play with my son',
 		completed: false,
 	},
 	{
 		id: 7,
-		description: 'Go out with the dogs',
+		quote: 'Go out with the dogs',
 		completed: false,
 	},
 ]
 
 function App() {
 	const [tasks, setTask] = useState(DUMMY_TASKS)
-	const [isAdding, setIsAdding] = useState(false)
-	const [isEditing, setIsEditing] = useState(false)
-	const [editingId, setEditingId] = useState(null)
-	const [editingDesc, setEditingDesc] = useState('')
+	const [newTaskPopupIsShown, setNewTaskShown] = useState(false)
+	const [newId, setNewId] = useState(DUMMY_TASKS.length + 1)
+	// const [isEditing, setIsEditing] = useState(false)
+	// const [editingId, setEditingId] = useState(null)
+	// const [editingDesc, setEditingDesc] = useState('')
 
-	const addTaskHandler = task => {
+	window.addEventListener('keydown', e => {
+		if (e.key === 'Escape') {
+			setNewTaskShown(false)
+		}
+	})
+
+	const addTaskHandler = newTaskData => {
+		setNewId(prevState => {
+			return prevState + 1
+		})
+
 		setTask(prevState => {
 			const updatedTasks = [...prevState]
-			updatedTasks.unshift(task)
+			updatedTasks.unshift(newTaskData)
 			return updatedTasks
 		})
+
+		closeNewTaskPopoverHandler()
 	}
 
-	const deleteTaskHandler = taskId => {
+	const deleteTaskHandler = id => {
 		setTask(prevState => {
-			const updatedTasks = prevState.filter(task => task.id !== taskId)
+			const updatedTasks = prevState.filter(task => task.id !== id)
 			return updatedTasks
 		})
 	}
 
-	const isDoneTaskHandler = taskId => {
+	const completeTaskHandler = id => {
 		setTask(prevState => {
 			const updatedTasks = prevState.map(task => ({
 				id: task.id,
-				description: task.description,
-				completed: task.id === taskId ? (task.completed = !task.completed) : task.completed,
+				quote: task.quote,
+				completed: task.id === id ? !task.completed : task.completed,
 			}))
 			return updatedTasks
 		})
 	}
 
-	const startAddingHandler = () => {
-		setIsAdding(true)
+	const addNewTaskHandler = () => {
+		setNewTaskShown(true)
 	}
 
-	const stopAddingHandler = () => {
-		setIsAdding(false)
+	const closeNewTaskPopoverHandler = () => {
+		setNewTaskShown(false)
 	}
 
-	const startEditingHandler = (editingId, editingDescription) => {
-		setIsEditing(true)
-		setEditingId(editingId)
-		setEditingDesc(editingDescription)
-	}
+	// const startEditingHandler = (editingId, editingDescription) => {
+	// 	setIsEditing(true)
+	// 	setEditingId(editingId)
+	// 	setEditingDesc(editingDescription)
+	// }
 
-	const stopEditingHandler = (editingId, editingDesc) => {
-		console.log(editingId, editingDesc)
+	// const stopEditingHandler = (editingId, editingDesc) => {
+	// 	console.log(editingId, editingDesc)
 
-		setTask(prevState => {
-			const updatedTasks = prevState.map(task => ({
-				id: task.id,
-				description: task.id === editingId ? editingDesc : task.description,
-				completed: task.completed,
-			}))
-			return updatedTasks
-		})
-		setIsEditing(false)
-	}
+	// 	setTask(prevState => {
+	// 		const updatedTasks = prevState.map(task => ({
+	// 			id: task.id,
+	// 			description: task.id === editingId ? editingDesc : task.description,
+	// 			completed: task.completed,
+	// 		}))
+	// 		return updatedTasks
+	// 	})
+	// 	setIsEditing(false)
+	// }
 
 	return (
 		<div className='app'>
 			<Tasks
-				items={tasks}
-				onIsDoneItem={isDoneTaskHandler}
-				onEditItem={startEditingHandler}
-				onDeleteItem={deleteTaskHandler}
+				tasks={tasks}
+				onCompleteTask={completeTaskHandler}
+				onDeleteTask={deleteTaskHandler}
+				// onEditItem={startEditingHandler}
 			/>
 
-			<button className='new-task__buton' onClick={startAddingHandler}>
+			<button className='new-task__buton' onClick={addNewTaskHandler}>
 				Add new task
 			</button>
 
-			{isAdding && <NewTask onSaveData={addTaskHandler} onCancel={stopAddingHandler} />}
+			{newTaskPopupIsShown && <NewTask newId={newId} onSaveData={addTaskHandler} />}
 
-			{isEditing && (
+			{/* {isEditing && (
 				<RenameTask onSave={stopEditingHandler} onEdit={setEditingDesc} id={editingId} description={editingDesc} />
-			)}
+			)} */}
 		</div>
 	)
 }

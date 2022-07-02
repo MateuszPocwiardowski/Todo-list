@@ -18,6 +18,4 @@ $ npm start
 https://mp-to-do.netlify.app/
 
 ## Plans for the development of the application in the future
-- add the ability to edit the task,
-- add the ability to search for a task,
-- perform tests.
+- add the ability to search for a task
