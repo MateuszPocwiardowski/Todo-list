@@ -5,22 +5,28 @@ import './Task.css'
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Task = props => {
-	const taskClassName = props.completed === true ? 'task__description task__description--done' : 'task__description'
-
-	const deleteHandler = () => {
-		props.onDelete(props.id)
-	}
+const Task = ({ id, description, completed, onIsDone, onEditItem, onDelete }) => {
+	const taskClassName = completed === true ? 'task__description task__description--done' : 'task__description'
 
 	const isDoneHandler = () => {
-		props.onIsDone(props.id)
+		onIsDone(id)
+	}
+
+	const editHandler = () => {
+		onEditItem(id, description)
+	}
+
+	const deleteHandler = () => {
+		onDelete(id)
 	}
 
 	return (
 		<div className='task'>
-			<button className={taskClassName} onClick={isDoneHandler}>{props.description}</button>
+			<button className={taskClassName} onClick={isDoneHandler}>
+				{description}
+			</button>
 			<div className='task__panel'>
-				<button className='task__panel--edit'>
+				<button className='task__panel--edit' onClick={editHandler}>
 					<FontAwesomeIcon icon={faPencilAlt} />
 				</button>
 				<button className='task__panel--remove' onClick={deleteHandler}>
