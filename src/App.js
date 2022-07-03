@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Tasks from './components/Tasks'
 import NewTask from './components/NewTask'
 import RenameTask from './components/RenameTask'
+import Alert from './components/Alert/Alert'
 
 import './App.css'
 
@@ -54,6 +55,7 @@ function App() {
 	window.addEventListener('keydown', e => {
 		if (e.key === 'Escape') {
 			setIsAdding(false)
+			setIsEditing(false)
 		}
 	})
 
@@ -89,7 +91,7 @@ function App() {
 		})
 	}
 
-	const editTaskHandler = (editedTask) => {
+	const editTaskHandler = editedTask => {
 		setTask(prevState => {
 			const updatedTasks = prevState.map(task => ({
 				id: task.id,
@@ -109,9 +111,11 @@ function App() {
 				onCompleteTask={completeTaskHandler}
 				onDeleteTask={deleteTaskHandler}
 				onAddTask={() => {
+					setIsEditing(false)
 					setIsAdding(true)
 				}}
 				onEditTask={(id, quote, completed) => {
+					setIsAdding(false)
 					setIsEditing(true)
 					setEditingTask({
 						id: id,
@@ -122,8 +126,10 @@ function App() {
 			/>
 
 			{isAdding && <NewTask newId={newId} onSaveData={addTaskHandler} />}
+			{!isAdding && <Alert trigger={isAdding}>Task added with success!</Alert>}
 
 			{isEditing && <RenameTask editingTask={editingTask} onEditData={editTaskHandler} />}
+			{!isEditing && <Alert trigger={isEditing}>Task edited with success!</Alert>}
 		</div>
 	)
 }
