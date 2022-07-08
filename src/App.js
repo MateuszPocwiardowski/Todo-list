@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Tasks from './components/Tasks'
 import NewTask from './components/NewTask'
 import RenameTask from './components/RenameTask'
-import Alert from './components/Alert/Alert'
 
 import './App.css'
 
@@ -126,10 +125,7 @@ function App() {
 			/>
 
 			{isAdding && <NewTask newId={newId} onSaveData={addTaskHandler} />}
-			{!isAdding && <Alert trigger={isAdding}>Task added with success!</Alert>}
-
 			{isEditing && <RenameTask editingTask={editingTask} onEditData={editTaskHandler} />}
-			{!isEditing && <Alert trigger={isEditing}>Task edited with success!</Alert>}
 		</div>
 	)
 }
